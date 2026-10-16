@@ -1,6 +1,6 @@
 # INSTRUCCIONES
 
-> Última actualización: 2026-10-15
+> Última actualización: 2026-10-16
 
 ## Abrir y probar el juego
 
@@ -8,6 +8,7 @@
 2. Pulsa **F5**. La escena principal muestra a Gota en reposo:
    - Tras 8 s quieta entra en reposo prolongado (mira a la cámara, cierra los ojos y pulsa su transparencia).
    - Pulsa cualquier tecla para que reaccione y vuelva al reposo.
+   - **A/D** o **flechas**: caminar. Mantén **C** o **Ctrl** para caminar sigilosa (agachada).
 
 ## Usar a Gota en otras escenas
 

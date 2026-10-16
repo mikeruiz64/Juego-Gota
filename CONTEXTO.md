@@ -1,6 +1,6 @@
 # CONTEXTO
 
-> Última actualización: 2026-10-15
+> Última actualización: 2026-10-16
 
 ## Objetivo
 
@@ -24,6 +24,7 @@ El diseño completo del personaje (forma, colores, ojos, expresiones, animacione
 - **Fotogramas de 512×512** (dibujados a 256×256 y renderizados al doble). En el juego el sprite se escala a 0,4 y su origen está en los pies.
 - **~12 fps** en todas las animaciones.
 - **Mirar a la izquierda:** se refleja en espejo (`flip_h`).
+- **Controles:** `mover_izquierda` (A, ←), `mover_derecha` (D, →) y `agacharse` (C, Ctrl). Agachada camina sigilosa y más despacio (70 px/s frente a 160). Por ahora solo hay movimiento horizontal, sin gravedad: depende del escenario, que sigue sin definir.
 - **Revisión en el navegador:** cada animación nueva se enseña en una página local con varias propuestas antes de darla por buena.
 - **Estructura de carpetas** como el resto de proyectos de Godot del usuario (`Assets/`, `Scenes/`, `Scripts/`, `Resources/`).
 
@@ -37,7 +38,7 @@ Juego Gota/
 ├── Scenes/
 │   ├── principal.tscn        Escena principal (de prueba por ahora)
 │   └── Gota/gota.tscn        CharacterBody2D + AnimatedSprite2D + colisión
-├── Scripts/Gota/gota.gd      Estados de reposo de Gota
+├── Scripts/Gota/gota.gd      Reposo y movimiento de Gota
 ├── Docs/CONTEXTO_PERSONAJE.md   Diseño del personaje (fuente de verdad)
 └── Arte/ (.gdignore)         Fuentes del arte; Godot no las importa
     └── Gota/
@@ -59,6 +60,7 @@ Juego Gota/
 | `reposo_determinada` | Sí | Enemigo o zona muy peligrosa; mirada determinada. |
 | `reposo_preocupada` | Sí | Según la historia. |
 | `reposo_recelosa` | Sí | Según la historia. |
+| `caminar_sigiloso` | Sí | Caminar con el botón de agacharse pulsado: pasos lentos y largos, casi sin rebote. |
 
 ## Entorno
 

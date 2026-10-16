@@ -13,4 +13,4 @@ offset_left = 16.0
 offset_top = 12.0
 offset_right = 900.0
 offset_bottom = 40.0
-text = "Pulsa una tecla para que Gota reaccione. Tras 8 s quieta entra en reposo prolongado."
+text = "A/D o flechas: caminar. Mantén C o Ctrl para caminar sigilosa. Tras 8 s quieta entra en reposo prolongado."

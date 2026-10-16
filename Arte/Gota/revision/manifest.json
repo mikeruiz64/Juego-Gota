@@ -4,57 +4,82 @@
  "suave": true,
  "animaciones": [
   {
-   "nombre": "Caminar",
-   "descripcion": "Pasitos cortos y firmes, en el sitio (el juego desplaza a Gota). Mira a la derecha; a la izquierda se refleja en espejo.",
+   "nombre": "Correr",
+   "descripcion": "Carrera en el sitio: en mitad de cada zancada los dos pies están en el aire.",
    "multiple": false,
    "variantes": [
     {
-     "id": "caminar_a",
-     "nombre": "A · Pasitos firmes",
-     "nota": "Ritmo tranquilo y seguro: dos pasos cada 0,8 s, rebote suave y algo inclinada hacia delante.",
-     "hoja": "sprites/caminar_a.png",
-     "cols": 8,
-     "n": 10,
-     "duraciones": [
-      80,
-      80,
-      80,
-      80,
-      80,
-      80,
-      80,
-      80,
-      80,
-      80
-     ],
-     "bucle": true,
-     "aprobada": false
-    },
-    {
-     "id": "caminar_b",
-     "nombre": "B · Ligera y rápida",
-     "nota": "Pasos más cortos y rápidos, levanta más los pies y rebota más: más ágil.",
-     "hoja": "sprites/caminar_b.png",
+     "id": "correr_a",
+     "nombre": "A · Carrera firme",
+     "nota": "Muy inclinada, zancadas largas y braceo amplio: corre con decisión.",
+     "hoja": "sprites/correr_a.png",
      "cols": 8,
      "n": 8,
      "duraciones": [
-      80,
-      80,
-      80,
-      80,
-      80,
-      80,
-      80,
-      80
+      70,
+      70,
+      70,
+      70,
+      70,
+      70,
+      70,
+      70
      ],
      "bucle": true,
      "aprobada": false
     },
     {
-     "id": "caminar_c",
-     "nombre": "C · Decidida",
-     "nota": "Pasos algo más largos, más inclinada y bracea más: avanza con determinación (valiente).",
-     "hoja": "sprites/caminar_c.png",
+     "id": "correr_b",
+     "nombre": "B · Carrera ligera",
+     "nota": "Pasos rápidos y saltarines, casi flota: ágil y ligera.",
+     "hoja": "sprites/correr_b.png",
+     "cols": 8,
+     "n": 8,
+     "duraciones": [
+      60,
+      60,
+      60,
+      60,
+      60,
+      60,
+      60,
+      60
+     ],
+     "bucle": true,
+     "aprobada": false
+    },
+    {
+     "id": "correr_c",
+     "nombre": "C · Carrera con gotitas",
+     "nota": "Como A, pero en cada pisada se desprenden gotitas diminutas que desaparecen enseguida.",
+     "hoja": "sprites/correr_c.png",
+     "cols": 8,
+     "n": 8,
+     "duraciones": [
+      70,
+      70,
+      70,
+      70,
+      70,
+      70,
+      70,
+      70
+     ],
+     "bucle": true,
+     "aprobada": false
+    }
+   ]
+  },
+  {
+   "nombre": "Caminar",
+   "descripcion": "Caminar normal, en el sitio (el juego desplaza a Gota). Mira a la derecha; a la izquierda se refleja en espejo.",
+   "multiple": false,
+   "variantes": [
+    {
+     "id": "caminar_h",
+     "nombre": "H · Natural",
+     "nota": "Un poco de todo y nada exagerado: se mece apenas, la punta acompaña el paso con un retraso suave.",
+     "hoja": "sprites/caminar_h.png",
      "cols": 8,
      "n": 11,
      "duraciones": [
@@ -72,6 +97,86 @@
      ],
      "bucle": true,
      "aprobada": false
+    },
+    {
+     "id": "caminar_i",
+     "nombre": "I · Solitaria",
+     "nota": "Paso tranquilo y algo pesado, manos casi quietas: camina sola, pensativa, sin prisa.",
+     "hoja": "sprites/caminar_i.png",
+     "cols": 8,
+     "n": 13,
+     "duraciones": [
+      81,
+      81,
+      81,
+      81,
+      81,
+      81,
+      81,
+      81,
+      81,
+      81,
+      81,
+      81,
+      81
+     ],
+     "bucle": true,
+     "aprobada": false
+    },
+    {
+     "id": "caminar_j",
+     "nombre": "J · Firme",
+     "nota": "Cada pisada se marca: se aplasta al apoyar y la punta se sacude un poco. Segura de adónde va.",
+     "hoja": "sprites/caminar_j.png",
+     "cols": 8,
+     "n": 10,
+     "duraciones": [
+      80,
+      80,
+      80,
+      80,
+      80,
+      80,
+      80,
+      80,
+      80,
+      80
+     ],
+     "bucle": true,
+     "aprobada": false
+    }
+   ]
+  },
+  {
+   "nombre": "Caminar sigilosa",
+   "descripcion": "Con el botón de agacharse pulsado: pasos lentos y largos, sin apenas rebote.",
+   "multiple": false,
+   "variantes": [
+    {
+     "id": "caminar_sigiloso",
+     "nombre": "Caminar sigilosa",
+     "nota": "Antes «F · Sigilosa». Levanta mucho los pies, misteriosa, como si acechara.",
+     "hoja": "sprites/caminar_sigiloso.png",
+     "cols": 8,
+     "n": 14,
+     "duraciones": [
+      86,
+      86,
+      86,
+      86,
+      86,
+      86,
+      86,
+      86,
+      86,
+      86,
+      86,
+      86,
+      86,
+      86
+     ],
+     "bucle": true,
+     "aprobada": true
     }
    ]
   },

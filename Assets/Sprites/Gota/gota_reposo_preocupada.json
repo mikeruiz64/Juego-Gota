@@ -359,14 +359,15 @@
   "size": { "w": 4096, "h": 2560 },
   "scale": "1",
   "frameTags": [
-   { "name": "reposo", "from": 0, "to": 38, "direction": "forward", "color": "#000000ff" },
-   { "name": "reposo_prolongado_entrada", "from": 39, "to": 86, "direction": "forward", "color": "#000000ff" },
-   { "name": "reposo_prolongado", "from": 87, "to": 110, "direction": "forward", "color": "#000000ff" },
-   { "name": "reaccion_movimiento", "from": 111, "to": 132, "direction": "forward", "color": "#000000ff" },
-   { "name": "reposo_alerta", "from": 133, "to": 162, "direction": "forward", "color": "#000000ff" },
-   { "name": "reposo_determinada", "from": 163, "to": 192, "direction": "forward", "color": "#000000ff" },
-   { "name": "reposo_preocupada", "from": 193, "to": 231, "direction": "forward", "color": "#000000ff" },
-   { "name": "reposo_recelosa", "from": 232, "to": 270, "direction": "forward", "color": "#000000ff" }
+   { "name": "caminar_sigiloso", "from": 0, "to": 13, "direction": "forward", "color": "#000000ff" },
+   { "name": "reposo", "from": 14, "to": 52, "direction": "forward", "color": "#000000ff" },
+   { "name": "reposo_prolongado_entrada", "from": 53, "to": 100, "direction": "forward", "color": "#000000ff" },
+   { "name": "reposo_prolongado", "from": 101, "to": 124, "direction": "forward", "color": "#000000ff" },
+   { "name": "reaccion_movimiento", "from": 125, "to": 146, "direction": "forward", "color": "#000000ff" },
+   { "name": "reposo_alerta", "from": 147, "to": 176, "direction": "forward", "color": "#000000ff" },
+   { "name": "reposo_determinada", "from": 177, "to": 206, "direction": "forward", "color": "#000000ff" },
+   { "name": "reposo_preocupada", "from": 207, "to": 245, "direction": "forward", "color": "#000000ff" },
+   { "name": "reposo_recelosa", "from": 246, "to": 284, "direction": "forward", "color": "#000000ff" }
   ]
  }
 }

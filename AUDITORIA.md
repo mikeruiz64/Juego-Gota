@@ -33,3 +33,26 @@
 - El escenario del juego sigue sin definir (afecta a fondos y a la legibilidad de una protagonista semitransparente).
 
 **Estado:** cerrada.
+
+---
+
+## AUD-002 — 2026-10-16 — Caminar sigilosa, agacharse y propuestas de caminar y correr
+
+**Alcance:** animaciones de desplazamiento de Gota y primer movimiento en Godot.
+
+**Decisiones:**
+- Caminar A, B y C descartadas (demasiado parecidas entre sí); D, E y G también.
+- La propuesta F (sigilosa) se aprueba como `caminar_sigiloso`: se usa al caminar con el botón de agacharse pulsado.
+- Acciones de entrada: `mover_izquierda` (A, ←), `mover_derecha` (D, →), `agacharse` (C, Ctrl).
+- `gota_hk.py` gana parámetros de paso: `balanceo`, `aplastar`, `manoAlto`, `bamboleo`, `vuelo` (correr) y `gotitas`.
+
+**Pruebas:**
+- Importación con Godot 4.6.3 en modo consola: sin errores.
+- Prueba automática: con derecha pulsada avanza a 160 px/s; agachada, a 70 px/s con `caminar_sigiloso`; a la izquierda se refleja; al soltar vuelve a `reposo`.
+
+**Riesgos y límites:**
+- Sin caminar normal aprobado, el juego usa la sigilosa para caminar también.
+- Agachada y quieta no tiene animación propia.
+- Movimiento solo horizontal y sin gravedad hasta que se defina el escenario.
+
+**Estado:** abierta (falta elegir caminar normal y correr).

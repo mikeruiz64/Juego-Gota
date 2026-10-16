@@ -4,9 +4,19 @@ extends CharacterBody2D
 ## Reposo: reposo -> (quieta mucho tiempo) entrada al reposo prolongado -> bucle
 ## de reposo prolongado. Si detecta movimiento durante el reposo prolongado,
 ## reacciona y vuelve al reposo.
+##
+## Movimiento horizontal (izquierda/derecha). Con "agacharse" pulsado camina
+## sigilosa, más despacio.
 
 ## Segundos quieta antes de empezar el reposo prolongado.
 @export var segundos_hasta_prolongado := 8.0
+## Velocidad al caminar normal (píxeles por segundo).
+@export var velocidad_caminar := 160.0
+## Velocidad al caminar agachada (sigilosa).
+@export var velocidad_sigilosa := 70.0
+
+## Animaciones de desplazamiento: al soltar las teclas se vuelve al reposo.
+const ANIMACIONES_MOVIMIENTO := [&"caminar", &"caminar_sigiloso"]
 
 @onready var sprite: AnimatedSprite2D = $Sprite
 
@@ -26,6 +36,20 @@ func _process(delta: float) -> void:
 		sprite.play(&"reposo_prolongado_entrada")
 
 
+func _physics_process(_delta: float) -> void:
+	var direccion := Input.get_axis(&"mover_izquierda", &"mover_derecha")
+	var agachada := Input.is_action_pressed(&"agacharse")
+	velocity.x = direccion * (velocidad_sigilosa if agachada else velocidad_caminar)
+	move_and_slide()
+
+	if direccion != 0.0:
+		_tiempo_quieta = 0.0
+		sprite.flip_h = direccion < 0.0
+		_reproducir(&"caminar_sigiloso" if agachada else &"caminar")
+	elif sprite.animation in ANIMACIONES_MOVIMIENTO:
+		sprite.play(&"reposo")
+
+
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_pressed() and not event.is_echo():
 		detectar_movimiento()
@@ -36,6 +60,15 @@ func detectar_movimiento() -> void:
 	_tiempo_quieta = 0.0
 	if sprite.animation in [&"reposo_prolongado_entrada", &"reposo_prolongado"]:
 		sprite.play(&"reaccion_movimiento")
+
+
+## Reproduce la animación si existe. Mientras el caminar normal no esté
+## aprobado, se usa el sigiloso en su lugar.
+func _reproducir(animacion: StringName) -> void:
+	if not sprite.sprite_frames.has_animation(animacion):
+		animacion = &"caminar_sigiloso"
+	if sprite.animation != animacion:
+		sprite.play(animacion)
 
 
 func _al_terminar_animacion() -> void:

@@ -144,8 +144,16 @@ def fotograma(v, t):
     giro = math.radians(v.get("angulo", 45))   # 0 = de frente; mira hacia la derecha
 
     # Caminar en el sitio (el juego desplaza el nodo). fase: un ciclo = dos pasos
-    paso = {"paso": 0, "alto": 0, "rebote": 0, "inclinacion": 0, "braceo": 0, **v.get("caminar", {})}
+    paso = {"paso": 0, "alto": 0, "rebote": 0, "inclinacion": 0, "braceo": 0,
+            "balanceo": 0, "aplastar": 0, "manoAlto": 0, "bamboleo": 0, "gotitas": 0, "vuelo": 0,
+            **v.get("caminar", {})}
     fase = 2 * math.pi * t
+    # Aplastar: más baja y ancha al apoyar el pie, más alta al cruzar los pies
+    k = paso["aplastar"] * math.cos(2 * fase)
+    sy *= 1 - k
+    sx *= 1 + k * 0.6
+    respira = (f"translate({CX} {SUELO}) scale({sx:.4f} {sy:.4f}) "
+               f"translate({-CX} {-SUELO})")
 
     def avance_pie(lado):
         """Avance del pie a lo largo de la mirada y su altura (avanza mientras está en el aire)."""
@@ -157,7 +165,13 @@ def fotograma(v, t):
         return x + avance * math.sin(giro), y + avance * math.cos(giro) * INCLINACION
 
     rebote = -paso["rebote"] * (abs(math.sin(fase)) - 0.5)       # arriba al cruzar los pies
-    respira = (f"translate(0 {rebote:.3f}) rotate({paso['inclinacion']} {CX} {SUELO}) " + respira)
+    # Balanceo: se mece hacia el pie que apoya en cada paso
+    giro_cuerpo = paso["inclinacion"] + paso["balanceo"] * math.sin(fase)
+    respira = (f"translate(0 {rebote:.3f}) rotate({giro_cuerpo:.3f} {CX} {SUELO}) " + respira)
+    # Bamboleo: la punta acompaña cada paso con algo de retraso (es agua)
+    if paso["bamboleo"]:
+        sesgo = paso["bamboleo"] * math.sin(2 * fase - 1.2)
+        respira += (f" translate({CX} {SUELO}) skewX({sesgo:.3f}) translate({-CX} {-SUELO})")
 
     def proyectar(az, radio, y):
         """Punto sobre la dirección az (rad, 0 = hacia la cámara) a cierta distancia del eje."""
@@ -175,8 +189,11 @@ def fotograma(v, t):
         _, _, z = proyectar(az, r0, 160)
         xh, yh, _ = proyectar(az, r0 + mo, 160 + md)
         # braceo: la mano va al contrario que el pie de su lado
-        xh, yh = mover(xh, yh, -avance_pie(lado)[0] * paso["braceo"] / max(paso["paso"], 1e-6)
-                       if paso["paso"] else 0)
+        bracea = (-avance_pie(lado)[0] * paso["braceo"] / paso["paso"]) if paso["paso"] else 0
+        xh, yh = mover(xh, yh, bracea)
+        # La mano sube un poco en los extremos del braceo (describe un arco)
+        if paso["braceo"]:
+            yh -= paso["manoAlto"] * (bracea / paso["braceo"]) ** 2
         if z <= 0:
             # Mano lejana: asoma por detrás del borde de la silueta
             lado_x = 1 if math.sin(az) >= 0 else -1
@@ -194,6 +211,8 @@ def fotograma(v, t):
         avance, alto = avance_pie(lado)
         xf, yf = mover(xf, yf, avance)
         yf -= alto
+        # Vuelo (correr): en mitad de la zancada los dos pies se despegan del suelo
+        yf -= paso["vuelo"] * max(0.0, -math.cos(2 * fase))
         trozo = f'<ellipse class="mano" cx="{xf:.2f}" cy="{yf:.2f}" rx="6" ry="4.2"/>'
         (pies_d if z > 0 else pies_t).append(trozo)
 
@@ -218,6 +237,16 @@ def fotograma(v, t):
     cuerpo.append(f'<g opacity="{op:.3f}">{"".join(delante)}</g>')
     partes.append(f'<g transform="{respira}">{"".join(cuerpo)}</g>')
     partes.append(f'<g opacity="{op:.3f}">{"".join(pies_d)}</g>')
+    # Gotitas: se desprenden por detrás en cada pisada y desaparecen enseguida
+    u = (2 * t) % 1                      # tiempo desde la última pisada (0..1)
+    if paso["gotitas"] and u < 0.7:
+        k = u / 0.7
+        for i in range(paso["gotitas"]):
+            gx = CX - 34 - (12 + 7 * i) * k
+            gy = 186 - 4 * i - (14 + 5 * i) * k + 26 * k * k
+            r = (1.9 - 0.4 * i) * (1 - 0.5 * k)
+            partes.append(f'<circle class="mano" cx="{gx:.2f}" cy="{gy:.2f}" r="{r:.2f}" '
+                          f'stroke-width="0.6" opacity="{(1 - k) ** 1.5:.3f}"/>')
     return "".join(partes)
 
 
@@ -285,24 +314,51 @@ def animacion(id_, nombre, descripcion, nota, **v):
 
 CAMINAR = {
     "nombre": "Caminar",
-    "descripcion": "Pasitos cortos y firmes, en el sitio (el juego desplaza a Gota). "
+    "descripcion": "Caminar normal, en el sitio (el juego desplaza a Gota). "
                    "Mira a la derecha; a la izquierda se refleja en espejo.",
     "variantes": [
-        {"id": "caminar_a", "nombre": "A · Pasitos firmes", "ciclo": 800, "amplitud": 0.01,
-         "caminar": dict(paso=5, alto=4, rebote=2, inclinacion=3, braceo=4),
-         "nota": "Ritmo tranquilo y seguro: dos pasos cada 0,8 s, rebote suave y algo inclinada hacia delante."},
-        {"id": "caminar_b", "nombre": "B · Ligera y rápida", "ciclo": 640, "amplitud": 0.01,
-         "caminar": dict(paso=4, alto=5.5, rebote=3, inclinacion=4, braceo=3),
-         "nota": "Pasos más cortos y rápidos, levanta más los pies y rebota más: más ágil."},
-        {"id": "caminar_c", "nombre": "C · Decidida", "ciclo": 900, "amplitud": 0.01,
-         "caminar": dict(paso=7, alto=3.5, rebote=1.6, inclinacion=6, braceo=5.5),
-         "nota": "Pasos algo más largos, más inclinada y bracea más: avanza con determinación (valiente)."},
+        {"id": "caminar_h", "nombre": "H · Natural", "ciclo": 900, "amplitud": 0.01,
+         "caminar": dict(paso=6, alto=5, rebote=2.2, inclinacion=3, braceo=5, balanceo=1.8,
+                         aplastar=0.015, manoAlto=2, bamboleo=1.5),
+         "nota": "Un poco de todo y nada exagerado: se mece apenas, la punta acompaña el paso con un retraso suave."},
+        {"id": "caminar_i", "nombre": "I · Solitaria", "ciclo": 1050, "amplitud": 0.01,
+         "caminar": dict(paso=5, alto=3.5, rebote=1.2, inclinacion=4, braceo=2.5, balanceo=1,
+                         manoAlto=0.8, bamboleo=1),
+         "nota": "Paso tranquilo y algo pesado, manos casi quietas: camina sola, pensativa, sin prisa."},
+        {"id": "caminar_j", "nombre": "J · Firme", "ciclo": 800, "amplitud": 0.01,
+         "caminar": dict(paso=6, alto=5.5, rebote=2.8, inclinacion=4, braceo=5.5, aplastar=0.028,
+                         manoAlto=3, bamboleo=2.2),
+         "nota": "Cada pisada se marca: se aplasta al apoyar y la punta se sacude un poco. Segura de adónde va."},
     ],
 }
 
+CORRER = {
+    "nombre": "Correr",
+    "descripcion": "Carrera en el sitio: en mitad de cada zancada los dos pies están en el aire.",
+    "variantes": [
+        {"id": "correr_a", "nombre": "A · Carrera firme", "ciclo": 560, "amplitud": 0.01,
+         "caminar": dict(vuelo=4, paso=9, alto=9, rebote=5, inclinacion=10, braceo=9, aplastar=0.03,
+                         manoAlto=4, bamboleo=2.5),
+         "nota": "Muy inclinada, zancadas largas y braceo amplio: corre con decisión."},
+        {"id": "correr_b", "nombre": "B · Carrera ligera", "ciclo": 480, "amplitud": 0.01,
+         "caminar": dict(vuelo=4, paso=7, alto=10, rebote=6, inclinacion=8, braceo=6, aplastar=0.02,
+                         manoAlto=3, bamboleo=3),
+         "nota": "Pasos rápidos y saltarines, casi flota: ágil y ligera."},
+        {"id": "correr_c", "nombre": "C · Carrera con gotitas", "ciclo": 560, "amplitud": 0.01,
+         "caminar": dict(vuelo=4, paso=9, alto=9, rebote=5, inclinacion=10, braceo=9, aplastar=0.03,
+                         manoAlto=4, bamboleo=2.5, gotitas=3),
+         "nota": "Como A, pero en cada pisada se desprenden gotitas diminutas que desaparecen enseguida."},
+    ],
+}
 
 PROPUESTAS = [
     CAMINAR,
+    CORRER,
+    animacion("caminar_sigiloso", "Caminar sigilosa",
+              "Con el botón de agacharse pulsado: pasos lentos y largos, sin apenas rebote.",
+              "Antes «F · Sigilosa». Levanta mucho los pies, misteriosa, como si acechara.",
+              ciclo=1200, amplitud=0.01,
+              caminar=dict(paso=7, alto=8, rebote=0.8, inclinacion=5, braceo=2, manoAlto=1)),
     animacion("reposo", "Reposo", "Idle normal. Expresión: seria con parpadeo.",
               "Respira dos veces cada 3,2 s y parpadea una vez.",
               ciclo=3200, respiraciones=2, ojos=PARPADEO),

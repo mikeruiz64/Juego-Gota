@@ -1,0 +1,148 @@
+{ "frames": [
+   {
+    "filename": "gota #caminar_sigiloso 0.aseprite",
+    "frame": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 86
+   },
+   {
+    "filename": "gota #caminar_sigiloso 1.aseprite",
+    "frame": { "x": 512, "y": 0, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 86
+   },
+   {
+    "filename": "gota #caminar_sigiloso 2.aseprite",
+    "frame": { "x": 1024, "y": 0, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 86
+   },
+   {
+    "filename": "gota #caminar_sigiloso 3.aseprite",
+    "frame": { "x": 1536, "y": 0, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 86
+   },
+   {
+    "filename": "gota #caminar_sigiloso 4.aseprite",
+    "frame": { "x": 2048, "y": 0, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 86
+   },
+   {
+    "filename": "gota #caminar_sigiloso 5.aseprite",
+    "frame": { "x": 2560, "y": 0, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 86
+   },
+   {
+    "filename": "gota #caminar_sigiloso 6.aseprite",
+    "frame": { "x": 3072, "y": 0, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 86
+   },
+   {
+    "filename": "gota #caminar_sigiloso 7.aseprite",
+    "frame": { "x": 3584, "y": 0, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 86
+   },
+   {
+    "filename": "gota #caminar_sigiloso 8.aseprite",
+    "frame": { "x": 0, "y": 512, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 86
+   },
+   {
+    "filename": "gota #caminar_sigiloso 9.aseprite",
+    "frame": { "x": 512, "y": 512, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 86
+   },
+   {
+    "filename": "gota #caminar_sigiloso 10.aseprite",
+    "frame": { "x": 1024, "y": 512, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 86
+   },
+   {
+    "filename": "gota #caminar_sigiloso 11.aseprite",
+    "frame": { "x": 1536, "y": 512, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 86
+   },
+   {
+    "filename": "gota #caminar_sigiloso 12.aseprite",
+    "frame": { "x": 2048, "y": 512, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 86
+   },
+   {
+    "filename": "gota #caminar_sigiloso 13.aseprite",
+    "frame": { "x": 2560, "y": 512, "w": 512, "h": 512 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+    "sourceSize": { "w": 512, "h": 512 },
+    "duration": 86
+   }
+ ],
+ "meta": {
+  "app": "https://www.aseprite.org/",
+  "version": "1.3.18.6-6-gb3e34acba-dev",
+  "image": "gota_caminar_sigiloso.png",
+  "format": "RGBA8888",
+  "size": { "w": 4096, "h": 1024 },
+  "scale": "1",
+  "frameTags": [
+   { "name": "caminar_sigiloso", "from": 0, "to": 13, "direction": "forward", "color": "#000000ff" },
+   { "name": "reposo", "from": 14, "to": 52, "direction": "forward", "color": "#000000ff" },
+   { "name": "reposo_prolongado_entrada", "from": 53, "to": 100, "direction": "forward", "color": "#000000ff" },
+   { "name": "reposo_prolongado", "from": 101, "to": 124, "direction": "forward", "color": "#000000ff" },
+   { "name": "reaccion_movimiento", "from": 125, "to": 146, "direction": "forward", "color": "#000000ff" },
+   { "name": "reposo_alerta", "from": 147, "to": 176, "direction": "forward", "color": "#000000ff" },
+   { "name": "reposo_determinada", "from": 177, "to": 206, "direction": "forward", "color": "#000000ff" },
+   { "name": "reposo_preocupada", "from": 207, "to": 245, "direction": "forward", "color": "#000000ff" },
+   { "name": "reposo_recelosa", "from": 246, "to": 284, "direction": "forward", "color": "#000000ff" }
+  ]
+ }
+}
