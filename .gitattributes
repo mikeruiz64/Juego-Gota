@@ -1,2 +1,5 @@
 # Normalize EOL for all files that Git considers text files.
 * text=auto eol=lf
+
+# GitHub: contar solo el código del juego (los scripts de Arte/ son herramientas de arte)
+Arte/** linguist-vendored
