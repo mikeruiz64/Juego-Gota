@@ -33,4 +33,4 @@ Godot 4.6 · GDScript · Python (generación del arte) · Aseprite (montaje de a
 
 ## Autor
 
-Michael Ruiz · [LinkedIn](https://www.linkedin.com/in/michael-ruiz-04244b370) · [GitHub](https://github.com/maxy26)
+Michael Ruiz · [LinkedIn](https://www.linkedin.com/in/michael-ruiz-04244b370) · [GitHub](https://github.com/mikeruiz64)
