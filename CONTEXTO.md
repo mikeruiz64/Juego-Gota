@@ -24,7 +24,8 @@ El diseño completo del personaje (forma, colores, ojos, expresiones, animacione
 - **Fotogramas de 512×512** (dibujados a 256×256 y renderizados al doble). En el juego el sprite se escala a 0,4 y su origen está en los pies.
 - **~12 fps** en todas las animaciones.
 - **Mirar a la izquierda:** se refleja en espejo (`flip_h`).
-- **Controles:** `mover_izquierda` (A, ←), `mover_derecha` (D, →) y `agacharse` (C, Ctrl). Agachada camina sigilosa y más despacio (70 px/s frente a 160). Por ahora solo hay movimiento horizontal, sin gravedad: depende del escenario, que sigue sin definir.
+- **Cámara cenital** (2026-10-16), como *The Minish Cap* o los Pokémon clásicos. En prueba: `Scenes/prueba_cenital.tscn` (escena principal por ahora), `Scripts/Gota/gota_cenital.gd` y `Resources/Gota/gota_frames_cenital.tres`, generado con `Arte/Gota/scripts/prueba_cenital.py` a partir de las hojas `cenital_*` (sin pasar por Aseprite). Acción nueva: `mover_arriba` (W, ↑) y `mover_abajo` (S, ↓).
+- **Controles (prueba cenital):** mover con WASD o flechas (8 direcciones), `correr` (Shift), `agacharse` (C, Ctrl), `saltar` (Espacio), `saltar_atras` (Q), `golpear` (J) y `escupir` (L, nivel de pelea 4). Movimiento de juego real: aceleración y frenado progresivos, pulsaciones guardadas durante las acciones, mantener golpear o saltar los repite, la recuperación de un golpe se corta con un salto o moviéndose y los frenados se cortan con cualquier botón. Lógica en `Scripts/Gota/gota_cenital.gd` (estados suelo / acción / reposo largo) y el ácido en `Scripts/Gota/acido.gd`.
 - **Revisión en el navegador:** cada animación nueva se enseña en una página local con varias propuestas antes de darla por buena.
 - **Estructura de carpetas** como el resto de proyectos de Godot del usuario (`Assets/`, `Scenes/`, `Scripts/`, `Resources/`).
 

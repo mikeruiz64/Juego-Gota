@@ -6,4 +6,6 @@
 Arte/*/fuentes/
 Arte/*/revision/sprites/
 Arte/*/revision/opiniones.json
+# Sprites provisionales de la cámara cenital (los genera Arte/Gota/scripts/prueba_cenital.py)
+Assets/Sprites/Gota/Prueba/
 __pycache__/

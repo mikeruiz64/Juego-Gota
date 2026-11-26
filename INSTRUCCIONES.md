@@ -47,7 +47,7 @@ El diseño del personaje manda: cualquier animación debe respetar [Docs/CONTEXT
 
 - Mensajes de commit **en español**, cortos y descriptivos.
 - Los commits los firma el usuario. **No se añaden coautores, firmas ni menciones a herramientas** en commits, ramas, pull requests ni archivos del proyecto.
-- No se suben: `.godot/`, `Arte/*/fuentes/`, `Arte/*/revision/sprites/` ni `opiniones.json` (se regeneran).
+- No se suben: `.godot/`, `Arte/*/fuentes/`, `Arte/*/revision/sprites/` ni `opiniones.json` (se regeneran). Tampoco `Assets/Sprites/Gota/Prueba/`, los sprites provisionales de la cámara cenital: se generan con `prueba_cenital.py` y hay que ejecutarlo tras clonar para ver la escena cenital.
 
 ## Flujo de cada sesión
 

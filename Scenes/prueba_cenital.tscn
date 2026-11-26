@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://Scripts/prueba_cenital.gd" id="1_mundo"]
+[ext_resource type="PackedScene" path="res://Scenes/Gota/gota_cenital.tscn" id="2_gota"]
+
+[node name="PruebaCenital" type="Node2D"]
+script = ExtResource("1_mundo")
+
+[node name="Gota" parent="." instance=ExtResource("2_gota")]
+position = Vector2(760, 520)
+
+[node name="Interfaz" type="CanvasLayer" parent="."]
+
+[node name="Ayuda" type="Label" parent="Interfaz"]
+modulate = Color(1, 1, 1, 0.85)
+offset_left = 16.0
+offset_top = 12.0
+offset_right = 1000.0
+offset_bottom = 160.0
+text = "Prueba de cámara cenital · WASD o flechas: caminar · Mantén C o Ctrl: caminar sigilosa"
