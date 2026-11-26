@@ -13,8 +13,13 @@ Videojuego 2D en **Godot 4.6** (nombre provisional). La protagonista es **Gota**
 
 ## Cómo probarlo
 
-1. Abre Godot 4.6 → **Importar** → elige `project.godot`.
-2. Pulsa **F5**. Gota aparece en reposo; espera 8 s o pulsa cualquier tecla para ver sus reacciones.
+1. Genera los sprites de prueba de la cámara cenital (no están en el repositorio; hace falta Python 3 y Brave en Windows):
+   ```
+   python -I Arte/Gota/scripts/gota_hk.py Arte/Gota
+   python -I Arte/Gota/scripts/prueba_cenital.py
+   ```
+2. Abre Godot 4.6 → **Importar** → elige `project.godot`.
+3. Pulsa **F5**. Gota se mueve con WASD o las flechas; espera 8 s quieta para ver su reposo prolongado.
 
 ## Estructura
 
